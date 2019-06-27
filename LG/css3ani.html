@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>animation / FrontDesign</title>
+<meta name="robots" content="all" />
+<link rel="stylesheet" href="css/reset.css" />
+<style>
+.icons {
+    width:800px;
+    height:300px;
+    padding-top:100px;
+    border-radius:10px;
+    text-align:center;
+    background:url('images/coffee2.jpg');
+
+}
+.icons a + a {
+    margin-left:20px;
+}
+.icons a { 
+    float:left; position: relative; overflow: hidden;
+    border-radius: 35px;
+}
+.icons a img {
+    width:200px;
+    height:200px;
+    vertical-align: top;
+    transition:all 0.3 ease;
+
+}
+.icons a span { 
+    display:block; width: 200px;height: 170px;  background-color: rgba(0,0,0,0.5);position:absolute; top:200px;
+    padding-top: 30px;
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+}
+.icons a:hover img {
+    transform:  scale(2);
+    /* 확대되는 기준  디폴트는 center center*/
+    transform-origin: center center;
+}
+.icons a:hover span { top:0;}
+
+.trans {
+    padding:10px 20px;
+    border-radius:10px;
+    border:4px solid #911208;
+    background-color:#f2531c;
+    box-shadow:0 0 10px #999;
+ }
+
+.transbg { clear:both;}
+.ani {
+    width:400px;
+    height:300px;
+    padding-top:100px;
+    border-radius:10px;
+    text-align:center;
+    background:url('images/coffee2.jpg');
+}
+
+.ani a img {
+    width:200px;
+    height:200px;
+}
+@keyframes btn_ani {
+    0% { opacity:1;}
+    50% { opacity: 0;}
+    100% { opacity: 1;}
+}
+.ani a:hover img {
+    animation: btn_ani 0.5s ease infinite;
+}
+</style>
+</head>
+
+<body>
+<!-- 트랜스폼 실습 -->
+<div class="icons">
+    <a href="#"><img src="images/player2.png"/><span>dlkfsljkdsjlfjlskljsdfljkdfs</span></a>
+    <a href="#"><img src="images/jack2.png"/><span>djkldjfsldkfjdslkfjdslkfjsdklfjdlkfsj</span></a>
+    <a href="#"><img src="images/radio2.png"/><span>djkldjfsldkfjdslkfjdslkfjsdklfjdlkfsj</span></a>
+</div>
+<br/><br/><br/><br/>
+
+
+<!-- 트랜지션 실습 -->
+<div class="transbg">
+	<a href="" class="trans">Click me!</a>
+</div>
+<br/><br/><br/><br/>
+
+
+<!-- 애니메이션 실습 -->
+<div class="ani">
+    <a href="#"><img src="images/jack2.png"/></a>
+</div>
+<br/><br/><br/><br/>
+
+
+</body>
+</html>
+
+
+
+
+
+
