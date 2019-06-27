@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko" >
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Wired</title>
+<link rel="stylesheet" href="css/reset.css" type="text/css"/>
+<style type="text/css">
+    table { width: 100%;border-collapse: collapse;}
+    table caption { caption-side: bottom; text-align: right;}
+    table tr{ }
+    table td{border-bottom:1px solid blue;}
+    table th{border-bottom:1px solid blue; }
+    table .part { color:red; }
+    
+    div { padding:30px;}
+    input[type="text"] { 
+        border:2px solid blue; padding: 5px; font-size: 10px;
+        border-radius: 10px; width:200px; height: 50px;
+    }
+    input:focus[type="text"] { background-color: lime;}
+    .a { vertical-align: middle;}
+    /*[] : 속성 선택*/
+    button { border:none; background-color: lime; padding:10px 20px; border-radius: 10px;}
+    button:hover { box-shadow: 10px 10px 10px #999, 0 0 10px red, 10px 0 10px blue, 0 10px 10px yellow;}
+    /* x y 퍼지게하는정도 ','찍으면 여러개 등록할 수 있음(배경이미지도 마찬가지)*/
+    button:active {
+        box-shadow: inset 5px 5px 5px #999;
+    }
+</style>
+</head>
+
+<body>
+<form>
+    <div><label for="user_id">id:</label><!--아이디 입력하는거라고 알려주는거 for 로 연결-->
+        <input id="user_id"type="text" name = "user_id" value="" placeholder="id" title="아이디입력"/>
+        <img class = "a" src = "http://placehold.it/30x20"/>
+        <!-- 부득이하게 라벨 쓸 수 없을 경우 차선책으로 타이틀사용.-->
+    </div>
+    <div> <input type="password" name="pw"/></div>
+    <div> <input type="checkbox" name="like" value = "k"/>a
+          <input type="checkbox" name="like" value = "j"/>b</div>
+    <div> 성별 :<input type="radio" name="a" id="m"/><label for = "m">남</label> <input type="radio" name="a"/>여</div>
+
+    <div><input type="submit" value="trans"/></div>
+    <div><input type="button" value="열기"/></div>
+    <div><input type="image" src="http://placehold.it/20x20"/></div>
+    <div><input type="reset"/></div>
+    <div><button type="submit">dfdf</button></div>
+    <select title="나라선택">
+        <option selected>나라선택</option>
+        <option>한국</option>
+        <option>미국</option>
+        <option>영국</option>
+    </select>
+    <textarea maxlength="200">댓글을 적어주세요.</textarea>
+</form> 
+    <table summury = "월화수목 수입 지출 내역"> <!-- 표  tr:한줄 table row  td :한칸 table data th: table header -->
+        <caption>주간 용돈 현황</caption>     <!-- 꼭 넣어줘야함. -->
+        <col style="width:20%; background-color: lime; font-size:100px;"/>                <!-- 열로 선택. style 옆에 3가지 밖에 안됨. -->        
+        <col />
+        <col />
+        <col />
+        <col />
+        <thead>
+            <tr>
+                <th  class = "part" id="col1">구분</th>
+                <th id="col2">월</th>
+                <th id="col3">화</th>
+                <th id="col4">수</th>
+                <th id="col5">목</th>
+            </tr>
+        </thead>
+        <tbody class="female">
+            <tr>
+                <th id="row1">수입</th>
+                <td colspan="2" rowspan="2"scope = "row" headers="col2 col3 row1 row2">1000원</td>    <!-- 뒤에 있는 셀이랑 가로병합 .rowspan은 세로병합.scope의미가 없어짐. -->
+                <!-- <td scope = "row">2000원</td> -->
+                <td rowspan="2"headers="col4 row1 row2">3000원</td>
+                <td headers="col5 row1">4000원</td>
+            </tr>
+            
+        </tbody>
+        <tbody clalss="male">
+            <tr>
+                <th id="row2" >지출</th>
+                <!-- <td scope = "row">1000원</td>
+                <td scope = "row">2000원</td> -->
+                <!-- <td scope = "row">3000원</td> -->
+                <td headers="col5 row2" >4000원</td>
+            </tr>
+            
+        </tbody>
+        <!-- <tfoot>
+            <tr>
+                <th>지출</th>
+                <td>1000원</td>
+                <td>2000원</td>
+                <td>3000원</td>
+                <td>4000원</td>
+            </tr>
+        </tfoot> -->
+    
+    </table>
+</body>
+</html>

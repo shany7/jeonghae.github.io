@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>hello world!</title>
+<style>
+* {margin:0; padding:0}
+li {list-style: none}
+body {padding:50px;}
+
+.wrap {
+	width:90.196078%; /* 920 / 1020 */
+	margin:0 auto; 
+	background-color:lime; 
+	height: 500px;
+}
+.tab_menu {
+	border:2px solid black; 
+	width:54.130435%; /* 498 / 920 */
+	margin:0 auto;
+	overflow: hidden;
+	min-width: 400px;
+}
+.tab_menu > li > a {
+	position: relative;
+	float:left; 
+	width: calc( (100% - 8px) / 5) ; /* 98 / 498 */
+	background-color: #999; 
+	line-height: 50px; 
+	text-align: center;
+	color:white;
+	text-decoration-line: none;
+}
+.tab_menu > li.on > a {
+	background-color:blue;
+}
+.tab_menu > li + li > a {
+	margin-left:2px;
+}
+.tab_content > div {
+	display: none;
+	margin:20px;
+	padding:20px;
+	background-color:blue;
+	color:white;
+	font-size:18px;
+}
+.tab_content > div.on {
+	display: block;
+	height: 300px;
+}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+	<ul class="tab_menu">
+		<li class="on"><a href=""></a></li>
+		<li><a href=""></a></li>
+		<li><a href=""></a></li>
+		<li><a href=""></a></li>
+		<li><a href=""></a></li>
+	</ul>
+	<div class="tab_content">
+		<div class="on">학교 내용</div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</div>
+<script>
+// * onclick 이벤트리스트너를 이용하세요.
+// * http://www.json-generator.com/api/json/get/ceFOzWDyEO?indent=4를 사용하세요.
+// 7. 탭이름과 탭내용을 json파일에 있는 것으로 만드시오.
+
+
+// 데이터 준비
+var requestURL = "http://www.json-generator.com/api/json/get/ceFOzWDyEO?indent=4";
+var requestObj = new XMLHttpRequest();
+requestObj.open("GET", requestURL);
+requestObj.responseType = "json";
+requestObj.send();
+requestObj.onload = function () {
+	var tabMenuJson = requestObj.response;
+	console.log(tabMenuJson);
+	tabmenu(tabMenuJson);
+}
+// 노드 준비
+var tabMenu = document.querySelector(".tab_menu");
+var tabMenuLis = tabMenu.querySelectorAll("li");
+var tabContentDivs = document.querySelectorAll(".tab_content > div");
+// 확인
+
+// 코드
+function tabmenu(tabData) {
+	console.log(tabData.tabItems[0].itemName);
+	for( var i = 0; i < tabData.tabItems.length; i++) {
+		tabMenuLis[i].childNodes[0].textContent = tabData.tabItems[i].itemName;
+		tabContentDivs[i].textContent = tabData.tabItems[i].itemContent;
+	}
+	for ( var k = 0; k < tabMenuLis.length; k++ ) {
+		tabMenuLis[k].menuIndex = k;
+	}
+	for ( var i = 0; i < tabMenuLis.length; i++ ) {
+		tabMenuLis[i].onclick = function (e) {
+			e.preventDefault();
+			for ( var j = 0 ; j < tabMenuLis.length; j++) {
+				tabContentDivs[j].classList.remove("on");
+				tabMenuLis[j].classList.remove("on");
+				// tabMenuLis[j].childNodes[0].style.backgroundColor="";
+				tabMenuLis[j].childNodes[0].removeAttribute("style");
+			}
+			
+			tabContentDivs[this.menuIndex].classList.add("on");
+			this.classList.add("on");
+			this.childNodes[0].style.backgroundColor = tabData.tabItems[this.menuIndex].itemColor;
+			tabContentDivs[this.menuIndex].style.backgroundColor = tabData.tabItems[this.menuIndex].itemColor;
+		
+		
+		};
+	}
+}
+
+
+</script>
+</body>
+</html>
