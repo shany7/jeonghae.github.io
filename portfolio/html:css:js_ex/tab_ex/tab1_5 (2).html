@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>hello world!</title>
+<style>
+* {margin:0; padding:0}
+li {list-style: none}
+body {padding:50px;}
+
+.wrap {
+	width:90.196078%; /* 920 / 1020 */
+	margin:0 auto; 
+	background-color:lime; 
+	height: 500px;
+}
+.tab_menu {
+	border:2px solid black; 
+	width:54.130435%; /* 498 / 920 */
+	margin:0 auto;
+	overflow: hidden;
+	min-width: 400px;
+}
+.tab_menu > li > a {
+	position: relative;
+	float:left; 
+	width: calc( (100% - 8px) / 5) ; /* 98 / 498 */
+	background-color: #999; 
+	line-height: 50px; 
+	text-align: center;
+	color:white;
+	text-decoration-line: none;
+}
+.tab_menu > li.on > a {
+
+}
+.tab_menu > li + li > a {
+	margin-left:2px;
+}
+.tab_content > div {
+	display: none;
+	margin:20px;
+	padding:20px;
+	color:white;
+	font-size:18px;
+}
+.tab_content > div.on {
+	display: block;
+	height: 300px;
+}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+	<ul class="tab_menu">
+		<li><a href="">학교</a></li>
+		<li><a href="">공원</a></li>
+		<li><a href="">놀이터</a></li>
+		<li class="on"><a href="">집안</a></li>
+		<li><a href="">사무실</a></li>
+	</ul>
+	<div class="tab_content">
+		<div>학교 내용</div>
+		<div>공원 내용</div>
+		<div>놀이터 내용</div>
+		<div class="on">집안 내용</div>
+		<div>사무실 내용</div>
+	</div>
+</div>
+<script>
+// * onclick 이벤트리스트너를 이용하세요.
+// * tab_5_data.js를 사용하세요.
+// 5. 클릭하면 tabData > tabItems > itemColor 항목을 이용해서 클릭할 때마다 해당 탭과 
+//    컨텐츠의 배경색이 같은색으로 바뀌도록 만드세요. 
+// http://www.json-generator.com/api/json/get/cgBQvfKzjC?indent=2
+
+var 요청URL = "http://www.json-generator.com/api/json/get/cgBQvfKzjC?indent=2";
+var 요청객체 = new XMLHttpRequest();			// 생성자객체라서 new로 생성. 
+
+요청객체.open( "GET" , 요청URL );						// open( get(주소로요청) or post(내가 필요한목록전달(id,pw등등등)) 방식중 어떤방식으로 요청할건지, 요청url);
+요청객체.responseType = "json";
+요청객체.send();
+요청객체.onload = function() {
+	var 탭메뉴json = 요청객체.response;			// 서버에 있는 데이터가져옴.
+	console.log(탭메뉴json);
+	tabmenu(탭메뉴json);
+};
+
+
+function tabmenu(tabData) {
+	console.log(tabData);
+	// 준비
+	var tabMenu = document.querySelector(".tab_menu");
+	var tabMenuLis = tabMenu.querySelectorAll("li");
+	var tabContentDivs = document.querySelectorAll(".tab_content > div");
+
+	// 확인
+	if (!tabData) {
+		console.log("data가 없어요");
+		return;
+	}
+	// 초기 색깔 자동화
+
+	
+	for (var g = 0; g < tabData.tabItems.length; g++  ) {
+		if (tabData.tabItems[g].default === true) {
+			tabMenuLis[g].className = "on";
+			tabContentDivs[g].className = "on";
+			tabMenuLis[g].childNodes[0].style.backgroundColor = tabData.tabItems[g].itemColor;
+			tabContentDivs[g].style.backgroundColor = tabData.tabItems[g].itemColor;
+		}
+	}
+	
+	// 코드
+	for (var i = 0; i < tabMenuLis.length; i++) {
+		tabMenuLis[i].onclick = (function (j) {
+
+			return function (e) {
+				for (var k = 0; k < tabMenuLis.length; k++) {
+					tabMenuLis[k].classList.remove("on");
+					tabMenuLis[k].childNodes[0].style.backgroundColor = "";
+					tabContentDivs[k].classList.remove("on");
+				}
+				this.classList.add("on");
+				this.childNodes[0].style.backgroundColor = tabData.tabItems[j].itemColor;
+				tabContentDivs[j].classList.add("on");
+				tabContentDivs[j].style.backgroundColor = tabData.tabItems[j].itemColor;
+				
+				return false;
+			}
+		})(i);
+	}
+}
+
+
+
+</script>
+</body>
+</html>

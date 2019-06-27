@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>hello world!</title>
+<style>
+* {margin:0; padding:0}
+.area {text-align: center; padding:200px}
+.area > a {
+	text-decoration: none; 
+	color:black; 
+	font-weight: bold;
+	padding: 6px 15px 3px;
+	border:3px solid black;
+	border-radius: 20px;
+	display: inline-block;
+	overflow:hidden;
+}
+.area > a:hover {
+	background-color:black;
+	color:white;
+}
+.anibtn:hover > span {
+	animation: textani 0.5s ease 1;
+}
+.anibtn > span {
+	float:left; 
+}
+@keyframes textani {
+	0% {transform: translateY(15px);}
+	70% {transform: translateY(-6px);}
+	100% {transform: translateY(0); }
+}
+</style>
+
+</head>
+<body>
+<div class="area">
+	<a href="" class="anibtn">BUY PEPSI PRODUCTS</a>
+</div>
+<script>
+// <span>으로 수작업으로 하지 않고 버튼 글씨를 읽어 자동으로
+// <span>으로 감싸진후 _1번 애니메이션 효과가 되도록 만들어 주세요.
+
+
+var aniBtn = document.querySelector(".anibtn");
+var aniBtnTexts = aniBtn.textContent;
+var delayTime = 0;
+
+console.log(aniBtnTexts.substring(0,1));
+aniBtn.textContent ="";
+for ( var i = 0; i < aniBtnTexts.length; i++) {
+	delayTime = delayTime + (0.5 / aniBtnTexts.length);
+	// var span = aniBtnTexts[i];
+	var span = aniBtnTexts.substring(i, i+1);
+	var spans = document.createElement("span");
+	aniBtn.appendChild(spans);
+	spans.style.animationDelay = delayTime + "s";
+	if ( span == " ") {
+		spans.textContent = "\0";
+	}
+	else {
+		spans.textContent = span;
+	}
+	
+
+}
+console.log(span.length);
+</script>
+</body>
+</html>

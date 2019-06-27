@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>hello world!</title>
+<!-- <link rel="stylesheet" media="all" href="" /> -->
+<style>
+* {margin:0; padding:0;}
+header {
+	background-color: black; height: 80px; }
+nav {
+	border-bottom: 2px solid white; 
+	height:80px; 
+	position:absolute; 
+	top:80px; 
+	left:0; 
+	right:0; 
+	background-color: rgba(255,255,255,0.3);
+}
+nav.on { position:fixed; top:0;}
+nav.on.up {  background: url("images/001-chevron.svg") no-repeat center center;} 
+nav.on.down {  background: url("images/002-down.svg") no-repeat center center;} 
+section {height: 500px;}
+section.red {background-color: red;}
+section.green {background-color: green}
+section.blue {background-color: blue}
+section.yellow {background-color: yellow}  
+
+/* 애니메이션은 전에꺼나 후에꺼 아무대서나 transition줘도 상관없음 */
+section * { font-size: 60px; opacity:0;}
+section.aniQue * {  opacity:1; transition:all 0.5s ease; color:yellow; transform: translateX(50%); padding-bottom: 20px;}
+section.aniQue p { transition-delay: 0.5s; font-size:24px;}
+section.aniQue a { display:block; transition-delay: 1s; font-size:24px;}
+
+
+</style>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <nav></nav>
+        </header>
+        <section class="red"></section>
+        <section class="green"></section>
+        <section class="blue">
+            <h2>안녕하세요</h2>
+            <p>우리의 공부는 성실이 전부다.</p>
+            <a href="">Go!</a>
+        </section>
+        <section class="yellow"></section>
+    </div>
+<script>
+   document.addEventListener("scroll", scrollWork);
+   var headerHeight = document.querySelector("header").offsetHeight;
+   var navEl = document.querySelector("nav");
+   var htmlEl = document.querySelector("html");
+   var sectionEl = document.querySelectorAll("section");
+
+   var prevScrollTop = htmlEl.scrollTop;;
+   
+   function scrollWork() {
+    console.log(htmlEl.scrollTop);
+    var nowValue = htmlEl.scrollTop;
+    // 메뉴 스티키 동작
+    if ( nowValue > headerHeight ) {
+       navEl.classList.add("on");
+    }
+    else if ( nowValue < headerHeight ) {
+        navEl.classList.remove("on");
+    }
+    if ( prevScrollTop > nowValue ) {
+        navEl.classList.add("up");
+        navEl.classList.remove("down");
+        htmlEl.style.cursor = "n-resize";
+
+    }
+    else if (prevScrollTop < nowValue  ) {
+        navEl.classList.add("down");
+        navEl.classList.remove("up");
+        htmlEl.style.cursor = "s-resize";
+    }
+    // htmlEl.style.cursor = "default";
+    prevScrollTop = nowValue;
+
+    if ( nowValue > 580 && nowValue < 1580 ) {
+        sectionEl[2].classList.add("aniQue");
+    }
+    else {
+        sectionEl[2].classList.remove("aniQue");
+    }
+    
+   }
+</script>
+
+
+</body>
+</html>

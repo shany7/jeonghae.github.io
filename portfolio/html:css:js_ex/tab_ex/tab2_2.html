@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>hello world!</title>
+<style>
+* {margin:0; padding:0}
+li {list-style: none}
+.notice {width:400px;}
+.notice > .tab > li > a {
+	float:left;
+	background-color: #ededed;
+	width:50%;
+	padding:10px;
+	text-align: center;
+	text-decoration: none;
+	color:black;
+	box-sizing: border-box;
+	font-weight: bold;
+	letter-spacing: 10px;
+}
+.notice > .tab > li + li > a {
+	border-left:1px solid white;
+}
+/* .notice > .tab.on0 > li.art > a {
+	background-color: lime;
+	border-bottom:1px solid lime;
+}
+.notice > .tab.on1 > li.science > a {
+	background-color: lime;
+	border-bottom:1px solid lime;
+} */
+.notice > .contents > div{
+	width:100%;
+	height: 100px;
+	padding: 30px;
+	background-color: #ededed;
+	box-sizing: border-box;
+	display: none;
+	clear:both;
+	position: relative;
+}
+.notice > .contents.on0 > .art{
+	background-color:lime;
+	display:block;
+}
+.notice > .contents.on1 > .science{
+	background-color:lime;
+	display:block;
+}
+.notice > .contents > div > .close {
+	position:absolute;
+	right:10px;
+	bottom:10px;
+	font-size: 12px;
+}
+
+</style>
+
+</head>
+<body>
+<div class="notice">
+	<ul class="tab on1"> <!-- on0은 art가 열리고, on1는 science가 열림 -->
+		<li class="art"><a href="">예술</a></li>
+		<li class="science"><a href="">과학</a></li>
+    </ul>
+    <div class="contents on1"> <!-- on0은 art가 열리고, on1는 science가 열림 -->
+        <div class="art">
+            <p>예술은 아름답다. 예술은 아름답다. 예술은 아름답다. 예술은 아름답다. 예술은 아름답다.</p>
+            <a href="" class="close">닫기</a>
+        </div>
+        <div class="science">
+            <p>과학은 아름답다. 과학은 아름답다. 과학은 아름답다. 과학은 아름답다. 과학은 아름답다.</p>
+            <a href="" class="close">닫기</a>
+        </div>
+    </div>
+	
+</div>
+<script>
+
+// 탭 클래스 이름과 컨텐츠 클래스 이름 매칭하여 만드세요.
+// addEventListener를 사용하세요.
+
+var tabElem = document.querySelector(".notice");
+var tabs = tabElem.querySelector(".tab");
+var tabContents = tabElem.querySelector(".contents");
+
+tabElem.addEventListener("click", todo);
+
+function todo(e) {
+	e.preventDefault();
+	for ( var i = 0; i < tabs.children.length; i ++) {
+		if ( tabs.children[i] === e.target.parentNode) {
+			판단하기("on"+i, e.target.parentNode.tagName);
+		}
+	}
+	
+}
+function 판단하기(state, target) {
+	if ( tabs.classList.contains(state) || target === "DIV") {
+		tabs.className = "tab";
+		tabContents.className = "contents";
+	
+	}
+	else {
+		tabs.className = "tab " +  state;
+		tabContents.className = "contents " +  state;
+	}
+}
+
+
+// var onNum = tabs.classList.item(1);
+// var num = onNum.substring(2);
+// console.log(num);
+// var prevClick = e.target;
+// if ( num == e.target.parentNode.index) {
+// 	tabs.classList.remove(onNum);
+// 	tabContents.classList.remove(onNum);
+// }
+// else {
+// 	tabs.classList.remove(onNum);
+// 	tabContents.classList.remove(onNum);
+// 	onNum = "on" + e.target.parentNode.index;
+// 	tabs.classList.add(onNum);
+// 	tabContents.classList.add(onNum);
+// }
+</script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko" >
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Text style</title>
+<link rel="stylesheet" href="reset.css" type="text/css" media="all"/>
+<style type="text/css">
+    /* 박스다루기 - p71 안쪽 상자 margin이용하는 방법*/
+    /*div { 
+        border: 4px solid black;
+        background-color: lime;
+        width: 492px;
+    }
+    p {
+        border: 4px solid black;
+        margin: 20px;
+        padding: 10px;
+        background-color: orange;
+
+    }*/
+    /* 부모상자 padding 이용하는 방법 */
+    .services { border: 4px solid black; padding: 20px; width: 452px; margin-top: 10px; color: red}
+    .services > h2::before{content:' " '; }                                                                      /* 없는 태그를 만들어 넣음('::') css적으로 넣는 방법 content 사이에 넣을 말 '' 사이에 넣기 before/after(앞뒤로넣기) */
+    .services > h2::after{ content: ' " '; }                                                                     /* 가상의 상자를 만드는 것. 초기값이 inline블럭이므로 display값 바꿔서 사용도 가능 */
+    .services > .service_item { 
+        border: 4px solid black; padding: 10px; margin-bottom: 20px; 
+        text-indent: 20px; text-decoration-line: underline;
+        text-decoration-line: underline;
+        text-decoration-style: dashed;
+        text-decoration-color: lime;
+    }
+    /* text-indent: 문장의 첫줄을 들여쓰기 decoration-line: 줄긋기 */
+    .services > :last-child { margin-bottom: 0px; }                                                                   /* 가상의 클래스를 만들어서 해당 객체한테 적용(':' 이용) */
+    .services > h2 + .service_item { border:4px solid purple;}                                                      /* '+'는 바로 그다음 자식 의미 */
+    /* .services > .service_item + .service_item { margin: 10px; } 마지막 상자 마진따로 넣어줄 필요없이 사이 간격만 띄워짐. */
+    
+    /* 옵션 */
+    #services > .service_item.best {                                                                                  /* services라는 이름을 가진 태그에서 */
+        background-color: yellow;
+        background-image: url('images/radio2.png');
+        background-repeat: no-repeat;                                                                                 /* repeat가 초기값. repeat-x, repeat-y */
+        background-attachment: scroll;
+        background-position: 20px 0px;                                                                                /* 왼쪽 모서리 기준으로 포지셔닝(left-top이 디폴트). % 단위도 가능함. */
+        /* 한방에 쓰기 */
+        background:yellow url('images/radio2.png') no-repeat scroll right bottom;
+    }                                              
+
+    div#services > .service_item.hot { font-size: 18px; color:orange;}
+    .services > .service_item > h3 { color: red;}
+    
+    .menu  li { border: 1px solid blue; }                                                                      /* 한칸(' ')만 띄우면 자손선택, '>'는 직계자식 */
+    .menu li li li { border: 1.5px solid red; }                                                                /* '>' 생략가능 */
+    .menu > li > ul > li:last-child { border: 2px solid lime;}                                                 /* '>' 가 필요한지 없어도 되는지 잘 생각해야함! li:last-child - 태그가 li이면서 last-child인 애(따라서 띄어쓰기 중요) */
+   
+    ul.menu > li > ul > li::nth-child(3) { border: 1px solid red; }                                            /* 최신 문법. n 번째 자식 선택 */
+
+    /* a:visited { color : red ;}
+    a:link {color : aqua;}
+    a:hover{ background-color: yellow;}                                                                        /* hover: 커서 올리면 색 변경. li같은곳에도 적용가능 active: 클릭했을 때 색변경 둘이 동급일대는 hover밑에 active배치*/
+    /* div#services > div.service_item:active{ background-color: green !important;}
+    #services > .service_item:hover { background-color: black;} */ 
+</style>
+</head>
+
+<body>
+    
+    <h3>열혈사제</h3>                                                                   <!-- 김남길이 출연진설명, 출연진이 스브스 설명 쭉쭉쭉 정의하고 설명할때 쓰는 것 -->
+    <dl>
+        <dt>방송국</dt>
+        <dd><a href = "mailto:shany7540@naver.com">여기로</a>sbs</dd>                  <!-- 클릭하면 메일로 바로 이메일 보낼 수 있게 -->
+        <dt><a href = "http://naver.com#car"></a>출연진</dt>                           <!-- 클릴하면 해당 홈페이지에 '#___' 내용으로 바로 가는 것 -->
+        <dd><a href = "#car">김남길</a></dd>                                           <!-- 클릭하면 해당 내용으로 가는것. '#id'. id는 가고 싶은 내용 있는곳에 지정해줌. -->
+        
+    </dl>
+
+<hr/>                                                                                                    <!-- 덩어리로 나누는 태그. 시각적으로 선도 그어짐 -->
+    <ul class="menu">                                                                                    <!-- <ol> 순서가 있을때. ul이나 li는 순서가 없음 -->
+        <li class = "1depth"> <a href = "http://naver.com" target = "_blank">1depth</a></li>             <!-- a태그 시 'href' 빈칸이라도 꼭 넣어줘야함. target은 탭하나 더 열어서 링크오픈. -->                              
+        <li>1
+            depth</li>
+        <li>1depth
+            <ul>
+                <li>2depth</li>
+                <li>2depth
+                    <ul>
+                        <li>3depth</li>
+                        <li>3depth</li>
+                        <li>3depth</li>
+                        <li>3depth</li>
+
+                    </ul>
+                </li>
+                <li>2depth</li>
+                <li>2depth</li>
+            </ul>
+        </li>
+        <li id = "car">1depth</li>
+        <li>1depth</li>
+    
+    </ul>
+    
+    <a href ="#">맨위로 </a>                                                               <!-- 클릭하면 맨위로 '#' -->
+    <div id = "services" class = "services">
+        <h2 id = " jeonghae"> 네이버에서 하는 서비스들 소개 </h2>                                <!-- 딱한번만 사용할 때 id사용. css할 때는 지양하고 데이터불러올때 쓰는 것이 좋음. -->
+        
+        <div class = "service_item best" >
+            <h3>카페</h3>    
+            <p >박스는 가장자리를 둘러싸고있는 <strong>block박스</strong>와 글줄(line)을 이루고 있는 <strong>line박스</strong> 그리고 그 안(in line)에서  흐르고있는 <strong>inline박스</strong>로 이루어져 있습니다. line박스는 눈으로 확인할 수 는 없고 다만, 내부적으로 글줄이 만들어 지면서 자동으로 생성됩니다.</p>
+                
+        </div>
+        
+        <div class = "service_item hot">
+            <h3><a href = "sdsdsdsd">영화</a></h3>
+            <p >박스는 가장자리를 둘러싸고있는 <strong>block박스</strong>와 글줄(line)을 이루고 있는 <strong>line박스</strong> <em>그리고</em> <b>그</b> <i>안(in line)</i>에서  흐르고있는 <strong>inline박스</strong>로 이루어져 있습니다. line박스는 눈으로 확인할 수 는 없고 다만, 내부적으로 글줄이 만들어 지면서 자동으로 생성됩니다.</p>
+                
+        </div>
+        <div class = "service_item">
+            <h3>블로그</h3>
+            <p >박스는 가장자리를 둘러싸고있는 <strong>block박스</strong>와 글줄(line)을 이루고 있는 <strong>line박스</strong> 그리고 그 안(in line)에서  흐르고있는 <strong>inline박스</strong>로 이루어져 있습니다. line박스는 눈으로 확인할 수 는 없고 다만, 내부적으로 글줄이 만들어 지면서 자동으로 생성됩니다.</p>
+        
+        </div>
+    </div>
+    </body>
+    </html>
+
+<!-- class 이름 지을 때 한칸띄우면(' ') 이름두개로 설정할 수 있음 <div class = "number english" > -->
+<!-- 주요뼈대는 그대로 하고 옵션을 추가해서 코딩 하는 것이 효율적 -->
+<!-- h1은 가급적 한번만 쓰는 것이 좋음. 단계별로 코딩(h1->h1->...) 검색이 잘되는 곳에 h1(꼭 로고에 할 필요 없음)-->
+<!-- <br> : 개행하는 태그. 어쩔수 없을 때 . 문단을 나누고 싶을 때 그냥 <p>를 두번 쓰는 것이 나음. -->
+<!-- 의미없는 그뤂핑: inline- <span> block- <div> -->
+<!-- 다른사람이 한말을 인용할 때: <q> : inline level 한문장 정도 -->
+<!-- <strong> : 강조, <em> : 약한강조 -->
+<!-- <b>/<i> 난 좀 달라라는 의미 -->
+<!-- <small> : 요약할 때 -->
+<!-- ****중요**** <a> -->
+<!-- 우선순위 
+      1. 자세하게 나타낼 수록 우선순위 높음 EX) div > h2 vs h2
+      2. id -> class -> tag  
+      3. 태그속에 박아버리면 설정시 id많아도 우선순위 이길 수 없음.(css코드 끝에 !important 쓰면 이길수 없음) -->
