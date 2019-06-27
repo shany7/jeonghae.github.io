@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>슬라이더</title>
+<style>
+* { margin:0; padding:0;}
+li { list-style: none;}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script>
+    $(document).ready(function() {
+        $('.jeonghae').bxSlider({
+            mode:"vertical" , 
+            auto:true
+        });
+    });
+</script>
+<style>
+    .bottom .bx-wrapper { 
+        border:none;
+        box-shadow: none;
+    }
+</style>
+</head>
+<body>
+    <div class = "bottom">
+        <ul class = "jeonghae">
+                <li><img src = "http://placehold.it/800x100?text=sample"/></li>
+                <li><img src = "http://placehold.it/800x100?text=jeonghae"/></li>
+                <li><img src = "http://placehold.it/800x100/E8117f"/></li>
+                <li><img src = "https://placeimg.com/200/100/animals/sepia"/></li>
+                <li><img src = "http://placehold.it/800x100"/></li>
+                <li><img src = "http://placehold.it/800x100"/></li>
+                <li><img src = "http://placehold.it/800x100"/></li>
+        </ul>
+    </div>
+    
+</body>
+</html>

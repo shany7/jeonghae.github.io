@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>이벤트</title>
+
+<style>
+* {margin:0; padding: 0;}
+li {list-style: none}
+ul#photo_list {
+	border:2px solid lime; 
+	display: inline-block; 
+	padding: 20px;
+}
+ul#photo_list > li {
+	border:1px solid orange;  
+	float:left; 
+	padding: 20px; 
+	position: relative;
+}
+ul#photo_list > li > a {
+	border:1px solid black;
+	padding: 10px;
+}
+ul#photo_list ul {
+	overflow: hidden;
+	max-height: 0;
+	background-color: yellow; 
+	width: 100px;
+	padding: 0 10px;
+	z-index: 100;
+	border:1px solid lime;
+	position: absolute; 
+	top:40px; 
+	left:0;
+	transition: all 1s ease;
+}
+ul#photo_list ul.opened {
+	/* height: auto; */
+	max-height: 200px;
+}
+
+ul#photo_list ul > li {
+	border:1px solid orange;
+	padding: 5px;
+}
+ul#photo_list ul > li > a {
+	text-decoration: none;
+	border:1px solid black;
+}
+
+.ani_target { position: absolute; width:100px; height:100px; background-color: aqua;}
+button { border:1px solid red; margin-top:100px; font-size:24px;}
+</style>
+</head>
+<body>
+
+
+<div class = "ani_target"></div>
+<button class = "left">left</button>
+<button class = "stop">stop</button>
+<button class = "right">right</button>
+
+
+</body>
+
+<script>
+var targetAni = document.querySelector(".ani_target");
+var btnEl = document.querySelectorAll("button");
+var leftPosition = 0;
+var breakPoint = 0;
+var aniAction;
+
+for ( var i = 0; i < btnEl.length; i++) {
+	btnEl[i].addEventListener("click", todo);
+}
+
+function todo () {
+	if (this.className === "right") toRight();
+	else if (this.className === "stop") toStop();
+	else toLeft();
+}
+
+function toStop() {
+	clearTimeout(aniAction);
+}
+
+
+function toRight() {
+
+	if ( leftPosition < 300 && leftPosition >= 0) {
+		leftPosition += 10;
+		targetAni.style.left = leftPosition + "px";
+		aniAction = setTimeout( toRight , 16.666666);
+	} else {
+		clearTimeout(aniAction);
+	}
+}
+function toLeft() {
+	if ( leftPosition === 0 ) { return;}
+	leftPosition -= 10;
+	targetAni.style.left = leftPosition + "px";
+	aniAction = requestAnimationFrame(toLeft);	
+	if (leftPosition === 0) {
+		cancelAnimationFrame(aniAction);						// event-loop 에 걸리지않고 16.66666666666ms에 맞춰서 실행됨. setTimeout은 밀릴수 있음. 
+	}
+
+}
+
+// ani();
+// function ani() {
+// 	if ( leftPosition < 500 && breakPoint !== 500 ) {
+// 		leftPosition += 10;
+// 		breakPoint += 10;
+// 	}
+// 	else if ( leftPosition < 500 || breakPoint === 500 ){
+// 		leftPosition -= 10;
+// 		if ( leftPosition === 0 ) {
+// 			breakPoint = 0
+// 		}
+// 	}
+// 	else {
+// 		return;
+// 	}
+// 	targetAni.style.left = leftPosition + "px";
+// 	setTimeout( function () { ani() } , 16.666666);
+// }
+
+
+
+</script>
+</html>
+
+
+
+
+
+
+

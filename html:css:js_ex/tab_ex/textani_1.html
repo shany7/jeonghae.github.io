@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>hello world!</title>
+<style>
+* {margin:0; padding:0}
+.area {text-align: center; padding:200px}
+.area > a {
+	text-decoration: none; 
+	color:black; 
+	font-weight: bold;
+	padding: 6px 15px 3px;
+	border:3px solid black;
+	border-radius: 20px;
+	display: inline-block;
+	overflow:hidden;
+}
+.area > a:hover {
+	background-color:black;
+	color:white;
+}
+.anibtn:hover > span {
+	animation: textani 0.5s ease 1;
+}
+.anibtn > span {
+	float:left; 
+}
+@keyframes textani {
+	0% {transform: translateY(15px);}
+	70% {transform: translateY(-6px);}
+	100% {transform: translateY(0); }
+}
+/*
+1. 전 15px / 아래에서 시작해서
+2. 중간 -6px / 더위로 올라갔다가
+3. 끝 0 / 다시 자리로 내려옮
+
+트랜지션은 전과 후밖에 없기 때문에 이렇게 3단계의 키프레임은 되지 않는다. 그래서 1,2,3 단
+계의 키프레임을 사용하여야 한다.
+*/
+</style>
+
+</head>
+<body>
+<div class="area">
+	<a href="" class="buy anibtn">
+		<span>B</span>
+		<span>U</span>
+		<span>Y</span>
+		<span>&nbsp</span>
+		<span>P</span>
+		<span>E</span>
+		<span>P</span>
+		<span>S</span>
+		<span>I</span>
+		<span>&nbsp</span>
+		<span>P</span>
+		<span>R</span>
+		<span>O</span>
+		<span>D</span>
+		<span>U</span>
+		<span>C</span>
+		<span>T</span>
+		<span>S</span>
+	</a>
+</div>
+<script>
+// 보여준 예처럼 글자들마다 차례대로 올라갔다 내려오는 버튼 애니메이션이
+// 되도록 작업해 주세요.
+
+
+var aniBtn = document.querySelector(".anibtn");
+var aniSpan = aniBtn.querySelectorAll("span");
+var j = 0;
+for ( var i = 0; i < aniSpan.length; i++) {
+	j = j + (0.5 / aniSpan.length) ;
+	aniSpan[i].style.animationDelay = j + "s";
+}
+
+</script>
+</body>
+</html>

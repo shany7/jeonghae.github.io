@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>hello world!</title>
+<style>
+* {margin:0; padding:0}
+li {list-style: none}
+body {padding:50px;}
+
+.wrap {
+	width:90.196078%; /* 920 / 1020 */
+	margin:0 auto; 
+	background-color:lime; 
+	height: 500px;
+}
+.tab_menu {
+	border:2px solid black; 
+	width:54.130435%; /* 498 / 920 */
+	margin:0 auto;
+	overflow: hidden;
+	min-width: 400px;
+}
+.tab_menu > li > a {
+	position: relative;
+	float:left; 
+	width: calc( (100% - 8px) / 5) ; /* 98 / 498 */
+	background-color: #999; 
+	line-height: 50px; 
+	text-align: center;
+	color:white;
+	text-decoration-line: none;
+}
+.tab_menu > li.on > a {
+	background-color:blue;
+}
+.tab_menu > li + li > a {
+	margin-left:2px;
+}
+.tab_content > div {
+	display: none;
+	margin:20px;
+	padding:20px;
+	background-color:blue;
+	color:white;
+	font-size:18px;
+}
+.tab_content > div.on {
+	display: block;
+	height: 300px;
+}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+	<ul class="tab_menu">
+		<li class="on"><a href="">학교</a></li>
+		<li><a href="">공원</a></li>
+		<li><a href="">놀이터</a></li>
+		<li><a href="">집안</a></li>
+		<li><a href="">사무실</a></li>
+	</ul>
+	<div class="tab_content">
+		<div class="on">학교 내용</div>
+		<div>공원 내용</div>
+		<div>놀이터 내용</div>
+		<div>집안 내용</div>
+		<div>사무실 내용</div>
+	</div>
+</div>
+<script>
+// * onclick 이벤트리스트너를 이용하시오
+// 4. 이름 없이 순서로만 매칭 하기
+// 설명 : 이번에는 이름없이 순서를 이용해서 작업하세요. 
+//       단, 갯수가 틀리면 갯수를 조절하라는 메시지를 console.log()로 던지고 실행되지 않게 하세요.
+
+//준비
+var tabMenu = document.querySelector(".tab_menu");
+var tabMenuLis = tabMenu.querySelectorAll("li");
+var tabContentDivs = document.querySelectorAll(".tab_content > div");
+
+
+// for ( var i = 0; i < tabMenuLis.length; i++) {
+// 	tabMenuLis[i].onclick = (function (i) {
+// 		return function (e) {
+// 		e.preventDefault();
+// 		for( var j = 0; j < tabMenuLis.length; j++) {
+// 			tabMenuLis[j].classList.remove("on");
+// 			tabContentDivs[j].classList.remove("on");
+// 		}
+		
+// 		var clickedMenu = e.target.parentNode;
+// 		console.log(e.target.textContent);
+		
+// 		if (tabMenuLis[i].querySelector("a").textContent === e.target.textContent) {
+// 			clickedMenu.classList.add("on");
+// 			tabContentDivs[i].classList.add("on");
+// 			return;
+// 		}
+// 	}
+// 	})(i);
+// }
+
+// for ( var i = 0; i < tabMenuLis.length; i++) {
+// 	tabMenuLis[i].onclick = (function (i) {
+// 		return function(e) {
+// 			e.preventDefault();
+// 			if ( clickedMenu.tagName !== "LI") { return;}
+
+// 			var clickedMenu = e.target.parentNode;
+// 			for ( var j = 0; j < tabMenuLis.length; j++) {
+// 				tabMenuLis[j].classList.remove("on");
+// 				tabContentDivs[j].classList.remove("on");
+				
+// 			}
+// 			if ( clickedMenu === tabMenuLis[i]) {
+// 				tabMenuLis[i].classList.add("on");
+// 				tabContentDivs[i].classList.add("on");
+// 			}
+			
+// 		}
+		
+// 	})(i);
+		
+// }
+
+// this 이용
+// for ( var i = 0; i < tabMenuLis.length; i++) {
+// 	tabMenuLis[i].menuIndex = i;
+// }
+
+// for ( var i = 0; i < tabMenuLis.length; i++) {
+	
+// 	tabMenuLis[i].onclick = function () {
+// 		console.log(this);				// this는 클릭한 li
+		
+// 		for ( var j = 0 ; j < tabMenuLis.length; j++) {
+// 			tabContentDivs[j].classList.remove("on");
+// 			tabMenuLis[j].classList.remove("on");
+// 		}
+// 		tabContentDivs[this.menuIndex].classList.add("on");
+// 		this.classList.add("on");
+
+// 		return false;  // e.preventDefault();랑같음
+
+// 	}
+// }
+
+
+for ( var i = 0; i < tabMenuLis.length; i++) {
+	
+	tabMenuLis[i].onclick = function () {
+		console.log(this);				// this는 클릭한 li
+		
+		for ( var j = 0 ; j < tabMenuLis.length; j++) {
+			tabContentDivs[j].classList.remove("on");
+			tabMenuLis[j].classList.remove("on");
+		}
+		for( var k = 0; k < tabMenuLis.length; k++) {
+			if (this === tabMenuLis[k]) {
+				tabContentDivs[k].classList.add("on");
+				this.classList.add("on");
+			}
+		}
+		return false;
+
+	}
+}
+
+
+
+</script>
+</body>
+</html>
