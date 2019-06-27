@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>hello world!</title>
+
+<style>
+.box {
+    position: relative;
+    left:0;
+    width:100px;
+    height:100px;
+    background-color:red;
+}
+</style>
+</head>
+<body>
+        <h5>Millisecond Javascript Timer</h5>
+        <form name="d">
+        <input type="text" size="8" name="d2">
+        <input type="button" value="Start/Stop" onclick="startstoptimer()">
+        <input type="reset" onclick="resettimer()">
+        </form>
+    <div class="box"></div>
+    <a href="" class="btn">시작</a>
+<script>
+    var target = document.querySelector(".box");
+    var startBtn = document.querySelector(".btn");
+    startBtn.addEventListener("click", boxAni);
+    startBtn.addEventListener("click", startstoptimer);
+    var btncount = 0;
+    var count = 0;
+    
+    function boxAni(e) {  
+        e.preventDefault();
+        btncount++;
+        
+        var startTime = 0; 
+        var duration = 1000;
+        
+        move(); //최초실행
+        function move(timestamp){ 
+            count++;
+            console.log("count : " + count);
+            // 문서가 로드된 후 부터 흐르고 있는 시간을 raf함수가 실행해 줄 콜백함수의 인자로 주는데 
+            // 이걸 timestamp라는 이름으로 넘겨 받습니다. 콘솔로 찍어보면 16ms차이로 흘러가는 시간이
+            // 찍히는 걸 볼 수 있습니다.
+            // console.log("timestamp : " + timestamp);
+            // 최초 0일때를 거르고 넘어온 현재 시간값을 저장합니다.
+            if (!startTime) { 
+                startTime = timestamp;
+            }
+            // 다음 넘겨받은 현재시간 값에서 이전시간 값을 빼서 raf가 실행된후(A값)부터 지난 시간(P)만 구합니다.
+            var pastTime = timestamp - startTime;
+            // 이제 진행된 P값을 전체시간(B-A)으로 나누어 비율값인 t값을 구해냅니다.
+            var timeT = pastTime / duration;
+            console.log("pastTime : " + pastTime);
+            // console.log("timeT : " + timeT);
+            var raf = requestAnimationFrame(move);
+
+            if ( solution(btncount) === "Even") { 
+                cancelAnimationFrame(raf);
+            }
+        }
+        
+    }
+    function solution(num) {
+            return (num % 2)? "Odd":"Even"; 
+        }
+    var millisec2 = 0;
+    var millisec = 0;
+    var seconds = 0;
+    var timer;
+    var timer_st = 0;
+    var timer_endt = 0;
+    function display(){
+
+
+        if (millisec2>=9){
+            millisec2=0;
+            millisec+=1;
+            if (millisec >=9){
+                millisec=0;
+                seconds+=1;
+            }
+        }
+        else
+            millisec2+=1
+            console.log(document.d.d2.value = seconds + "." + millisec  + millisec2);
+            timer = setTimeout("display()",0.001);
+        }
+
+    function starttimer() {
+        
+        if (timer > 0) {
+            return;
+        }
+            display();	
+        }
+    function stoptimer() {
+        clearTimeout(timer);
+        timer = 0;
+    }
+
+    function startstoptimer() {
+        if (timer > 0) {
+            clearTimeout(timer);
+            timer = 0;
+        } else {
+            display();
+        }
+        if ( solution(btncount) === "Even") {
+            stopTimer();
+        }
+    }
+
+    function resettimer() {
+        stoptimer();
+        millisec = 0;
+        seconds = 0;
+    }
+
+
+</script>
+</body>
