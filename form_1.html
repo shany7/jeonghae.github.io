@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>hello world!</title>
+<style>
+* {margin:0; padding:0}
+::selection {background-color: gold;}
+.form {width:600px; margin:50px auto 0}
+.form table {background-color:gainsboro; width:100%; margin-bottom:20px}
+.form table caption {padding:20px; font-size:24px;}
+.form table th,table td {padding:10px}
+.form table th {text-align: left}
+.form table input {width:200px; border-style:none; padding:10px; border-radius:5px;}
+.form input.btn {background-color: greenyellow; padding:5px 10px; font-size:16px; border-radius:3px;}
+span { color: red; font-size: 12px; display: inline-block; margin-left: 13px;}
+</style>
+
+</head>
+<body>
+<div class="form">
+	<table>
+		<col style="width:20%"/>
+		<col/>
+		<caption>회원가입</caption>
+		<tbody>
+			<tr>
+				<th><label for="user_name">이름</label></th>
+				<td><input type="text" id="user_name" placeholder="본명을 입력해 주세요"/></td>
+			</tr>
+			<tr>
+				<th><label for="user_birthday">생년월일</label></th>
+				<td><input type="text" id="user_birthday" placeholder="yymmdd로 입력해 주세요."/></td>
+			</tr>
+			<tr>
+				<th><label for="user_phone">휴대폰 번호</label></th>
+				<td><input type="text" id="user_phone" placeholder="'-'를 제외해 주세요."/></td>
+			</tr>
+			<tr>
+				<th><label for="user_id">ID</label></th>
+				<td><input type="text" id="user_id" /></td>
+			</tr>
+			<tr>
+				<th><label for="user_pw">PW</label></th>
+				<td><input type="password" id="user_pw" placeholder="영문,숫자 6자리 이상"/></td>
+			</tr>
+		</tbody>
+	</table>
+	<div>
+		<input type="submit" value="확인" class="btn" />
+		<input type="button" value="취소" class="btn" />
+	</div>
+</div>
+<script>
+// 확인버튼을 눌렀을때 글씨를 적지 않은 필드가 있으면, border:2px solid red로 만들고
+// console.log()로 그 해당필드에 입력하라는 메세지를 보여주세요.
+// ex. "아이디를 입력해 주세요!"
+// 만약 두개의 필드를 입력하지 않았다면, 
+// 모두 콘솔로 출력되도록 해주세요. 
+var inputs = document.querySelectorAll("tbody input");
+var btns = document.querySelectorAll(".btn");
+var warningSpan;
+var warning;
+btns[0].addEventListener("click", okCheck);
+btns[1].addEventListener("click", cancel);
+
+
+function okCheck () {
+		
+		for ( var i = 0; i < inputs.length; i++) {
+			var value = inputs[i].value;
+			
+			if ( !value ) {
+				inputs[i].style.border = "2px solid red";
+				var labelName = document.querySelector("label[for=" + inputs[i].id + "]");	//각괄호로 속성 찾을 수 있음
+				if ( !inputs[i].parentNode.querySelector("span")) { 
+					warningSpan = document.createElement("span");
+					warning = inputs[i].parentNode.appendChild(warningSpan);
+				}
+				
+				warning.textContent = labelName.textContent + "의 값을 입력해주세요";
+			
+				console.log(labelName.textContent+ "의 값을 입력해주세요");
+			}
+			else {
+				inputs[i].style.border = "";
+				if (inputs[i].parentNode.querySelector("span")){
+					inputs[i].parentNode.querySelector("span").remove();
+				}
+			}
+		
+		}
+}
+
+
+function cancel() {
+	for ( var i = 0; i < inputs.length; i++) { 
+		inputs[i].value = "";
+		inputs[i].style.border = "none";
+		if (inputs[i].nextElementSibling) {
+			inputs[i].nextElementSibling.remove();
+		}
+		
+	}
+}
+
+</script>
+</body>
+</html>
