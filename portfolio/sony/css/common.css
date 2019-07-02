@@ -1,0 +1,102 @@
+@charset "utf-8";
+
+html {
+	font-size:100.01%;
+}
+body {
+	font:normal 12px "애플고딕", AppleGothic, "돋움", dotum, Arial, Verdana, sans-serif;
+	line-height:1.3;
+	color:#666666;
+	background-color:#fff;
+	margin:0;
+	padding:0;
+}
+br	{
+	letter-spacing: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size:1em;
+}
+h1, h2, h3, h4, h5, h6, div, p, dl, dt, dd, ul, ol, li, form, fieldset, blockquote, address, table, thead, tbody, tfoot, tr, td, caption, button {
+	margin:0;
+	padding:0;
+}
+ul, ol {
+	list-style:none;
+}
+img {
+	border:0;
+}
+table {
+	width:100%;
+	border-collapse: collapse;
+	font-size:1em;
+}
+
+a:link, a:visited {
+	color: #666666;
+	text-decoration:none;
+}
+a:hover {
+	color: #666666;
+	text-decoration:underline;
+}
+fieldset {
+	border:0;
+}
+legend {
+	display:none;
+}
+select, input, textarea {
+	font:normal 1em "애플고딕", AppleGothic, "굴림", gulim, Arial, Verdana, sans-serif;
+	color:#797b80;
+	vertical-align:middle;
+}
+em {
+	font-style: normal;
+}
+hr {
+	clear:both;	
+	height:0; 
+	visibility:hidden; 
+	overflow:hidden;
+	display: none;
+}
+
+/* common css */
+.arrow_down::after { content:''; position: absolute; top:6px; right:-16px;border-bottom:4px solid transparent; border-top:4px solid #818088; border-right:4px solid transparent; border-left:4px solid transparent;}
+.arrow_up::after { content:''; position: absolute; top:6px; right:-16px;border-bottom:4px solid #818088; border-top:4px solid transparent; border-right:4px solid transparent; border-left:4px solid transparent;}
+
+/* .nav_etc li.favorites a::before { font-family: "Sony-System-Icons"; display:inline-block; vertical-align: middle; line-height: 1;} */
+.visibilityHidden { position: absolute; width:1px; overflow: hidden;}
+
+/* header */
+header { border:1px solid black; background-color: black; padding: 29px 0 22px 19.895013% /* 397/1905 */; color:#fff;}
+header nav::after { content:''; display: block; clear: both;}
+
+
+.sony_logo { border:1px solid red;width:95px; float:left; margin-right: 34px;}
+.sony_logo a { height:17px; display:block;}
+.sony_logo svg { width:100%; vertical-align: top;}
+
+.nav_menu { border:1px solid blue; color:#fff;text-align: justify; width:411px; margin-left:130px;float: left;}
+.nav_menu::after { content:''; display: inline-block; width:100%; font-size:0;}
+.nav_menu li { border:1px solid lime;display:inline-block; position: relative;}
+.nav_menu li.sub::after { }
+.nav_sub { display:none;}
+
+
+.nav_etc { border:1px solid aqua; font-size:0; float:right; }
+.nav_etc li { border: 1px solid lime;display: inline-block;font-size:10px; height: inherit}
+.nav_etc li.sign_in { position: relative;}
+.nav_etc li.search { background-color: #504d56;}
+.nav_etc li.sony_sites { background-color: #2e353d;}
+
+
+.nav_etc li a { color: inherit}
+.nav_etc li a.boxBtn { padding: 10px 14px; display:inherit;}
+.nav_etc li.sony_sites a.boxBtn { padding-bottom: 13px;}
+.nav_etc li.search a { font-size: 0;}
+.nav_etc li.search span { font-size:10px;}
+.nav_etc li.search svg { vertical-align: middle;}
+.nav_etc li.sony_sites span { position: relative; }
