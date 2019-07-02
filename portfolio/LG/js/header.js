@@ -1,13 +1,15 @@
 window.onload = function () {
-
+    var btnEl = document.querySelector(".nav_btn");
     $('.main_visual').bxSlider( {
         auto: false,
         pager:false,
     });
 mainMenu();                         // 브라우저 크기에서 전체메뉴 오픈
 showMenu();                         // 아이패드 이하 크기일 때 전체메뉴 오픈
-openSubMenu();                         // 아이패드 이하 크기에서 하위메뉴 오픈
-btnOption();                       // 상단 버튼메뉴
+openSubMenu();                      // 아이패드 이하 크기에서 하위메뉴 오픈
+btnOption();                        // 상단 버튼메뉴
+serchBox();                         // 검색창 열기
+moveInhouse();                      // 자회사 이동
 function mainMenu () {
     if ( window.innerWidth < 1280) { return;}     // 브라우저 크기에서만 작동.
 
@@ -65,13 +67,12 @@ function openSubMenu () {
 }
 
 function btnOption () {
-    var btnEl = document.querySelector(".nav_btn");
+    
     var langEl = btnEl.querySelector(".lang");
     var langAEl = langEl.querySelectorAll(".lang > a");
 
     langEl.addEventListener("mouseover", openLang);
     langEl.addEventListener("mouseout", closeLang);
-    langEl.addEventListener("click", changeLang);
 
     function openLang(e) {
         langEl.classList.add("on");
@@ -81,4 +82,66 @@ function btnOption () {
     }
    
 }
-};
+
+function serchBox() {
+    var serchBtn = btnEl.querySelectorAll("button.serch");
+    var divSerch = btnEl.querySelector("div.serch");
+    for ( var i = 0; i < serchBtn.length; i++) {
+        serchBtn[i].onclick = function () {
+            
+            if ( this.parentNode.className === "nav_btn") {
+                serchOn()
+            }
+            else {
+                serch();
+            }
+        };
+    }
+
+    function serchOn() {
+        if ( divSerch.classList.contains("on") ) {
+            divSerch.classList.remove("on");
+            return;
+        }
+        divSerch.classList.add("on");
+    }
+
+    function serch() {
+        var inputSch = divSerch.querySelector("input");
+        var closeBtn = divSerch.querySelector("button.close");
+        
+        closeBtn.onclick = function () {
+            divSerch.classList.remove("on");
+            return;
+        };
+        if ( inputSch.value == "") {
+            alert("검색어를 입력해주세요");
+        }
+        else {
+            // 검색
+        }
+
+    }
+
+}
+
+function moveInhouse() {
+    var inhouseEl = document.querySelector(".inhouse");
+    var inhouseList = inhouseEl.querySelector("ul");
+    inhouseEl.addEventListener("mouseover", openList);
+    inhouseEl.addEventListener("mouseout", closeList);
+
+    function openList(e) {
+        if ( e.target.tagName !== "A") return;
+        inhouseList.classList.add("on");
+    }
+
+    function closeList(e) {
+        if (e.relatedTarget.tagName === "A") return;
+        inhouseList.classList.remove("on");
+    }
+
+}
+
+};  // window.onload 끝
+
