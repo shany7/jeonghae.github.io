@@ -7,8 +7,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script src="js/common.js"></script>
 
-<style></style>
+<style>
+</style>
 <script>
 	$(document).ready(function(){
 		$('.outer').bxSlider();
@@ -17,11 +19,11 @@
 </head>
 <body>
 	<div class = "wrap">
-		<header><!-- header start -->
+		<header class = ""><!-- header start -->
 			<nav>
-				<div class = "nav_top on">
+				<div class = "nav_top">
 					<h1><a href = "m.naver.com">naver</a></h1>
-					<input id = "serch" type = "text" placeholder="검색어를 입력해주세요"/>
+					<input id = "search" type = "text" placeholder="검색어를 입력해주세요"/>
 					<div class = "special_serch">
 						<div class = "voice"></div>
 						<div class = "qr_code"></div>
@@ -36,10 +38,10 @@
 					<div class ="bottom_box">
 						<a href ="">자동저장 끄기</a>
 						<a href ="">도움말</a>
-						<a href ="">닫기</a>
+						<a href ="" class = "close">닫기</a>
 					</div>
 				</div>
-				<div class ="nav_bottom">
+				<div class ="nav_bottom notsch on">
 					<ul class = "naver_pann">
 						<li><a href="">뭐하지</a></li>
 						<li><a href="">MY단골</a></li>
@@ -59,11 +61,11 @@
 				</div>
 			</nav>
 		</header><!-- header end -->
-		<script type="text/javascript" src="header.js"></script>
+		
 		<aside><!-- aside start -->
 			<div class = "inner"></div>
 		</aside><!-- aside end -->
-		<main><!-- main start -->
+		<main class = "notsch on"><!-- main start -->
 			<div class = "breadcrumbs"></div>
 			<div class = "left"></div>
 			<div class = "contents"><!-- content start -->
@@ -787,7 +789,7 @@
 				</div>
 			</div><!-- content end -->
 		</main><!-- main end-->
-		<footer><!-- footer start -->
+		<footer class="notsch on"><!-- footer start -->
 			<div class = "inner">
 				<div class = "service">
 					<a href="" >로그아웃</a>

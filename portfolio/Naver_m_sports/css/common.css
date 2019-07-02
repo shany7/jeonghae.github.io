@@ -79,9 +79,10 @@ footer { background-color: #eff2f9;}
     .contents > * { float:none; width:100%;}
     main .contents::before { border-left:0px;}
 }
-
+.notsch { display:none;}
+.notsch.on { display:block;}
 /* common css */
-.half div:last-child { margin-bottom:56px;}
+.half > div:last-child { margin-bottom:56px;}
 h3 { font-size:15px; color:black; font-weight: bold;}
 .setting { position: absolute;  font-size: 13px;}
 .form_link { font-size:15px; padding:16px 15px 0 15px; position: relative;}
@@ -127,6 +128,7 @@ h3 { font-size:15px; color:black; font-weight: bold;}
 
 /* header */
 header {  position:fixed; top:0; width:100%;z-index:999999; background-color:#fff;}
+header.on { position: static;}
 .nav_top h1 { 
     width: 24px; height: 22px;
     background: url('../images/sp_search_v190524.png') no-repeat -213px -110px;
@@ -155,28 +157,43 @@ header {  position:fixed; top:0; width:100%;z-index:999999; background-color:#ff
 .nav_top .special_serch .location { 
     background: url('../images/sp_search_v190524.png') no-repeat -284px -1px; width: 20px; height: 26px;background-size: 343px 341px;
 }
-.nav_top.on { background-color:white; border:1px solid blue;position: absolute; left:0; right:0;  z-index: 999999;}
+.nav_top.on { background-color:white;}
 .nav_top.on input { padding:17px 0 17px 69px; margin:0;}
-.search_box { background-color: #eff2f9 ;position: absolute; top:52px;left:0; right:0; height:1000px; border:1px solid red;z-index:9999;}
+.nav_top.on .special_serch { display:none;}
+
+.search_box { display:none;color:#8f8f8f; background-color: #eff2f9 ;}
+.search_box.on { display:block; position: relative; border-top:1px solid #02c73c}
+.search_box::before { 
+    content:''; display:block;
+    background: url('../images/sp_search_v190524.png') no-repeat -280px -224px; 
+    width: 24px; height: 24px;background-size: 343px 341px;
+    position: absolute; right:17px; top:-37px; z-index: 9999999999px;
+}
 .search_box > div { background-color: white;}
-.search_box .top_box { text-align: center;font-size:15px; padding:60px 0; border-bottom:1px solid #e4e4e4;}
-.search_box .bottom_box { overflow: hidden;}
-.search_box .bottom_box a { font-size:13px; float:left;}
+.search_box .top_box { letter-spacing: -1px;text-align: center;font-size:15px; padding:60px 0; border-bottom:1px solid #e4e4e4;}
+.search_box .top_box p { color:black; margin-bottom:11px;}
+.search_box .top_box span a { color:#02c73c; text-decoration: underline;}
+.search_box .bottom_box { overflow: hidden; padding:13px 17px; border-bottom:1px solid #e4e4e4;}
+.search_box .bottom_box a { font-size:14px; float:left; color: inherit;}
+.search_box .bottom_box a:first-child::after { 
+    content: ''; border-left:1px solid #e4e4e4; display:inline-block; margin: 0 8px; height:13px; vertical-align: top;
+}
 .search_box .bottom_box a:last-child { float: right;}
 
 
 .nav_bottom { position: relative;}
 .nav_bottom .naver_pann { padding: 0 6.981627% 0 4.934383%; background-color: #08c613; text-align: justify; height: 52px;}
 .nav_bottom .naver_pann:after {content: ''; display:inline-block; width:100%; }
-.nav_bottom .naver_pann li { display: inline-block; font-size: 15px; margin: 16px 0; color:#eeeeee;}
-.nav_bottom .naver_pann li.on { color:#fff;}
-.nav_bottom > a { position: absolute; font-size: 15px;right: 16px; top:16px; color:#fff;}
+.nav_bottom .naver_pann li { display: inline-block; font-size: 15px; margin: 16px 0; color:#ceedd6;}
+.nav_bottom .naver_pann li.on { color:#fff; border-bottom:4px solid #cff0d8; padding-bottom:13px;}
+.nav_bottom .naver_pann li a { color: inherit;}
+.nav_bottom > a { position: absolute; font-size: 15px; width:30px;right: 0px; top:16px; color:#fff; background-color: #08c613;}
 
-@media screen and (max-width:840px) {
-    
+@media screen and (max-width:843px) {
+    .nav_bottom .naver_pann { min-width:843px; overflow: hidden;}
 }
 /* contents - live_match */
-.live_match { padding: 17px 0 0 12px; position: relative; background-color: #eff2f9;}
+.live_match { min-width:862px;padding: 17px 0 0 12px; position: relative; background-color: #eff2f9;}
 .live_match .ing { float:left;}
 .live_match .ing em{ background-color: #f92300;border-radius: 100%; width:6px; height: 6px; display: inline-block;}
 .live_match .ing em + em { margin-left: -2px;}
@@ -590,3 +607,7 @@ footer .inner div a:last-child::after { content:none;}
 footer .inner .service a { color:#57636f; font-size:13px;}
 footer .inner .service a::after {  margin:0 10px;}
 footer .inner .policy { margin:15px 0 6px; }
+
+@media screen and (max-width:639px) {
+
+}
