@@ -86,6 +86,10 @@ function btnOption () {
 function serchBox() {
     var serchBtn = btnEl.querySelectorAll("button.serch");
     var divSerch = btnEl.querySelector("div.serch");
+    var inputSch = divSerch.querySelector("input");
+    var closeBtn = divSerch.querySelector("button.close");
+
+    closeBtn.addEventListener("click", serchOff)
     for ( var i = 0; i < serchBtn.length; i++) {
         serchBtn[i].onclick = function () {
             
@@ -105,15 +109,12 @@ function serchBox() {
         }
         divSerch.classList.add("on");
     }
-
-    function serch() {
-        var inputSch = divSerch.querySelector("input");
-        var closeBtn = divSerch.querySelector("button.close");
-        
-        closeBtn.onclick = function () {
+    function serchOff() {
             divSerch.classList.remove("on");
-            return;
-        };
+            inputSch.value ="";
+    }
+    function serch() {
+        
         if ( inputSch.value == "") {
             alert("검색어를 입력해주세요");
         }
