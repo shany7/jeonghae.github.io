@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>hello world!</title>
+<!-- <link rel="stylesheet" media="all" href="" /> -->
+<style>
+* {margin:0; padding:0; }
+li {list-style: none}
+.list_item {border:1px solid red}
+#photo_book {border:2p solid black; width:300px; margin:0 auto;}
+#photo_book > ul > li {width:25%; float:left; }
+#photo_book > ul > li > a {position: relative; display:block;}
+#photo_book > ul > li > a:after {content:''; position: absolute; top:0; left:0; right:0; bottom:0; transition:all 0.3s ease;}
+#photo_book > ul > li.on > a:after {border:10px solid lime;}
+#photo_book > ul > li > a > img {width:100%; vertical-align: top;}
+#placeholder {width:100%;}
+
+</style>
+</head>
+<body>
+
+
+
+<div id="photo_book">
+	<h1>나의 사진첩</h1>
+	<ul id="photo_list"> 
+		<li><a href="images/bigben.jpg" title="멋진 건물"><img src="images/bigben.jpg" alt="" /></a></li>
+		<li><a href="images/coffee.jpg" title="향기로운 커피"><img src="images/coffee.jpg" alt="" /></a><span></span></li>
+		<li><a href="images/fireworks.jpg" title="화려한 불꽃놀이"><img src="images/fireworks.jpg" alt="" /></a>
+		</li>
+		<li><a href="images/rose.jpg" title="아름다운 장미"><img src="images/rose.jpg" alt="" /></a></li>
+	</ul>
+
+	<img id="placeholder" src="http://placehold.it/300x200" />
+	<p id="desc">사진 설명입니다.</p>
+
+<script>
+	// 1. 감지장치를 붙인다.
+	// 2. 타깃을 찾는다.
+	var photo = document.querySelector("#photo_list");
+	var photoItems = document.querySelectorAll("#photo_list > li");
+	var targetImg = document.querySelector("#placeholder");
+	var targetDesc = document.querySelector("#desc");
+	photo.addEventListener("mouseover", 할일);
+
+	// 3. 할일 함수를 만든다.
+	function 할일(e) {
+		e.preventDefault();
+		console.log(e.target);
+		// 4. 클릭한 해당 href를 가져와서 저장한다.
+		var 주소값 = e.target.getAttribute("href");
+		var 설명값 = e.target.getAttribute("title");
+		// 5. 타깃에 저장한 href를 쓴다.
+		targetImg.setAttribute("src", 주소값);
+		targetDesc.innerHTML = 설명값;
+		for (var i =0; i < photoItems.length; i++) {
+			photoItems[i].className = "";
+		}
+		e.target.parentNode.className = "on";
+	}
+</script>
+
+
+</body>
+</html>

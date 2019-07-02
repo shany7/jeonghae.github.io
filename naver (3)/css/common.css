@@ -1,0 +1,167 @@
+@charset "utf-8";
+
+/* reset */
+body {
+	font:normal 12px "애플고딕", AppleGothic, "돋움", dotum, Arial, Verdana, sans-serif;
+	color:#666666;
+	line-height: 1.7;
+	background-color:#fff;
+	margin:0;
+	padding:0;
+}
+br	{
+	letter-spacing: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size:1em;
+	font-weight:bold;
+}
+h1, h2, h3, h4, h5, h6, div, p, dl, dt, dd, ul, ol, li, form, fieldset, blockquote, address, table, thead, tbody, tfoot, tr, td, caption {
+	margin:0;
+	padding:0;
+}
+ul, ol {
+	list-style:none;
+}
+img {
+	border:0;
+}
+a {color:gray; text-decoration-line: none;}
+
+
+/* layout */
+.wrap {width:100%;}
+.header {width:940px; height:119px; margin:0 auto}
+.aside {width:100%; background-color:gray}
+.aside > .inner {width:940px; height:135px; margin:0 auto; background-color:red}
+.main {position:relative; width:940px; margin:0 auto; background-color:orange}
+.main > .breadcrumbs {position:absolute; top:0; right:0; background-color:white;}
+.main > .left {float:left; width:120px; height:300px; background-color:lime}
+.main > .contents {float:right; width:760px; padding:70px 0 100px; background-color:yellow;}
+.footer {clear:both; border-top:1px solid black; width:100%;}
+.footer > .inner {width:940px; height:130px; margin:0 auto; background-color: black;}
+
+/* header */
+.header {}
+.header h1 {border:1px solid yellow; margin-top:38px; float:left}
+.header .nav {position:relative; border:1px solid red; float:left; margin:39px 0 0 70px; z-index: 100; }
+.header .nav > li {border:1px solid lime; float:left;  }
+.header .nav > li + li {margin-left:36px;}
+.header .nav > li > a > img  {padding-bottom:12px; vertical-align: top;}
+.header .nav .sub {
+	border-top:2px solid #339900;
+	position: absolute;
+	padding: 18px 13px 16px 18px;
+    width: 303px;
+	top:30px;
+	left:0;
+	display: none;
+	background:url('../images/gnb_bg.png') no-repeat 0 bottom;
+}
+.header .nav .sub.opened { display: block;}
+.header .nav .sub > ul > li {width:101px; float:left}
+.header .util {float:right; border:1px solid white; margin:35px 0 0 0;}
+.header .util > li {
+	position: relative;
+	padding-right:7px; 
+	margin-right:6px;
+	border:1px solid lime; 
+	float:left;
+	background:url('../images/line_h.gif') no-repeat right 4px;
+}
+.header .util > li.global {background:none; }
+.header .util > li.lang {background:none; margin-top:-5px;}
+.header .util > li > ul {display: none;}
+.header .util > li > ul.opened {display: block;}
+
+.header .util > li.global > ul {
+	border:1px solid white;
+	padding: 10px 8px 10px;
+	width:100px;
+	position: absolute;
+	top:23px;
+	left:-7px;
+	border-top:2px solid #339900;
+	background:url('../images/util_bg_global.png') no-repeat 0 bottom;
+}
+
+.header .util > li.lang > ul {
+	border:1px solid white;
+	padding: 10px 8px 10px;
+	width:106px;
+	position: absolute;
+	top:28px;
+	left:-2px;
+	border-top:2px solid #339900;
+	background:url('../images/util_bg_lang.png') no-repeat 0 bottom;
+}
+
+/* common module */
+.slogan {margin-top:21px;}
+.col3:after {display:block; content:''; clear:both;}
+.col3 > .col {float:left}
+.col2:after {display:block; content:''; clear:both;}
+.col2 > .col {float:left}
+.col p + p {margin-top:36px;}
+
+/* 사회공헌 */
+.naver41 .slogan + img {margin-top:8px;}
+.naver41 .col2.first {
+	margin: 32px 0 30px;
+    padding-bottom: 75px;
+    border-bottom: 1px solid #999;
+}
+.naver41 .col2 > .col {width:360px;}
+.naver41 .col2 > .col + .col {margin-left:40px}
+.naver41 .downpdf > .photo {float:left}
+.naver41 .downpdf > strong {display: block; margin-bottom:18px;}
+
+/* 네이버소개 */
+.naver11 .col3.first {margin:30px 0; padding-bottom:40px; border-bottom:1px solid #999}
+.naver11 .col3 > .col {width:236px}
+.naver11 .col3 > .col + .col {margin-left:36px;}
+.naver11 .col3 > .col.last {width:215px;}
+.naver11 .link_banner {border-top:2px solid #339900}
+.naver11 .link_banner img {vertical-align: top;}
+.naver11 .col3.last {margin:43px 0 40px;}
+.naver11 .banner {
+	background:url('../images/bg_corp_down.gif') no-repeat right bottom;
+	border:1px solid red; height:70px; text-align: right;}
+.naver11 .visual {margin-left:-180px}
+
+/* 제휴제안 */
+.naver71 .col3 {position: relative; margin:48px 0 36px; padding-bottom:10px; border-bottom:1px solid #999}
+.naver71 .col3 > .col > ul > li {
+	padding-left:10px;
+	background: url('../images/bul_dot_squ.gif') no-repeat 0 8px;
+}
+.naver71 .col3 > .col > h4 {margin-bottom:8px;}
+.naver71 .col3 > .col + .col {margin-left:20px}
+.naver71 .col3 > .col .pro_btn {
+	position: absolute;
+	bottom:10px;
+}
+.naver71 .process > img {
+	margin:21px 0 32px;
+}
+.naver71 .process > ol {height:340px; border:1px solid red; position: relative;}
+.naver71 .process > ol > li {
+	position: absolute;
+	border:1px solid lime; 
+	width:380px;
+}
+.naver71 .process > ol > li.num1 {left:0; top:0;}
+.naver71 .process > ol > li.num2 {left:0; top:150px;}
+.naver71 .process > ol > li.num3 {left:380px; top:0}
+.naver71 .process > ol > li.num4 {left:380px; top:220px;}
+
+.naver71 .process > ol > li > ul {
+	margin:0 0 15px 35px;
+}
+.naver71 .process ul > li {
+	padding-left:10px;
+	background: url('../images/bul_dot_squ.gif') no-repeat 0 8px;
+}
+.naver71 .process ul > li + li {
+	margin-top:10px;
+}

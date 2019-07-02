@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>hello world!</title>
+<style>
+* {margin:0; padding:0}
+.comment {
+	padding:30px 0;
+	width:500px;
+	margin:0 auto;
+}
+.comment h4{
+	text-align: center;
+	margin-bottom:20px;
+}
+.comment textarea {
+	border:3px solid black;
+	width:100%;
+	display:block;
+	height:100px;
+	padding:20px;
+	font-size:16px;
+	box-sizing: border-box;
+}
+.comment .counter {text-align:right;}
+.comment .counter > span.toomuch {color:red}
+</style>
+
+</head>
+<body>
+<div class="comment">
+	<h4>댓글을 남겨주세요.</h4>
+	<p>50자내로 작성해주세요</p>
+	<textarea maxlength="40"></textarea>
+	<div class="counter"><span class="toomuch">0</span><strong> / 50</strong></div>
+</div>
+<script>
+// textarea에 글씨가 입력될 때 마다 몇 글자를 입력했는지 표기하세요.
+// maxlength에 설정된 값보다 넘으면 <span class="toomuch">가 되도록 하세요.
+// keyup이벤트를 사용하세요.
+var pEl = document.querySelector("p");
+var inputText = document.querySelector("textarea");
+var counterSpan = document.querySelector(".counter > span");
+var maxSpan = counterSpan.nextElementSibling;
+var text;
+inputText.addEventListener("keyup", countText);
+
+function countText (e) {
+	text = inputText.value;
+	counterSpan.textContent = text.length;
+	if ( text.length >= this.maxLength ) {
+		counterSpan.className = "toomuch";
+		counterSpan.textContent = this.maxLength;
+		return;
+	}
+	counterSpan.className = "";	
+	
+}
+pForm = pEl.textContent.substring(2);
+pEl.textContent = inputText.maxLength + pForm;
+spanForm = maxSpan.textContent.substring(0,3);
+maxSpan.textContent = spanForm + inputText.maxLength;
+
+</script>
+</body>
+</html>
