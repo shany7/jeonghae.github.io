@@ -64,7 +64,7 @@ hr {
 }
 button { border: none;}
 /* layout */
-.wrap { width:100%; padding-top:1px;}
+.wrap { width:100%; padding-top:0.1px;}
 header {  max-width: 1260px; min-width:321px;height: 100px;margin: 0 auto;}
 main .contents { max-width:1260px;min-width:321px; margin: 0 auto;  box-sizing: border-box;} 
 footer { max-width:1260px; margin: 0 auto; clear:both;min-width:321px; }
@@ -397,5 +397,6 @@ nav .nav_btn div.serch input { width:216px; }
 
 @media screen and ( max-width:482px) {
 .inner { padding-top:0;}
+.corp_info { top:130px;}
 }
  
