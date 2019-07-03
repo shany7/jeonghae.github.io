@@ -62,6 +62,7 @@ hr {
 	overflow:hidden;
 	display: none;
 }
+html { background-color:#eff2f9; }
 button { border: none; background-color: transparent;}
 .wrap { width: 100%; }
 main { margin-top:104px; }
@@ -73,6 +74,7 @@ main .contents::before {
 }
 .contents > * {  width:50%;  float:left; }
 .contents > * > * { margin-bottom:10px; background-color: #fff; }
+.contents .right_box { padding-bottom:0.1px;}
 footer { background-color: #eff2f9;}
 
 @media screen and (max-width:639px) {
@@ -136,7 +138,8 @@ header.on { position: static;}
     position: absolute;
 }
 .nav_top h1 a { text-indent: -999999999px; display: inline-block; }
-.nav_top h1::after { content:' '; border-left:1px solid #eeeeee;position: absolute; height: 21px; right:-14px;}
+.nav_top h1::after { display:block;content:' '; border-left:1px solid #eeeeee;position: absolute; height: 21px; right:-13px; top:1px;}
+.nav_top.on h1::after { display:none;}
 .nav_top input { 
     border:0px; width:100%;/* 1732/1905 */ font-size: 15px; box-shadow: none;
     margin: 17px 0; padding:0 0 0 69px; box-sizing: border-box;
