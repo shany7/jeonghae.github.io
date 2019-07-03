@@ -62,6 +62,7 @@ hr {
 	overflow:hidden;
 	display: none;
 }
+.fa .fas { font-weight: 600;}
 header { background-color: black; padding:22px 0 6px;  margin:0 auto;}
 main { background-color: #262629; height:1000px;padding:0 4.705882%; /* 72/1530 */}
 .contents { max-width: 1530px; margin:0 auto;}
@@ -93,10 +94,28 @@ header nav::after { content:''; display: block; clear: both;}
 .electronics > ul > li { width:25%; float:left; height:170px; margin-bottom:50px; padding-left:29px; box-sizing: border-box; border-left:1px solid #e4e4e4; position: relative;}
 .electronics > ul > li:nth-child(4n+1) { border-left:none;padding-left: 0;}
 .electronics ul li a.view_all {position: absolute; bottom:0; color:#615bef;}
-.electronics ul li a span { color:#615bef; font-size:11px; display: block; margin-bottom:17px;}
-/* ">>" 모양 웹아이콘썼음 */
+.electronics ul li a.view_all:hover {position: absolute; bottom:0; color:inherit;}
+.electronics ul li a span { color:#615bef; font-size:11px; display: block; margin-bottom:17px;position: absolute; top:0;}
+
+.electronics .sub_btn { text-align: center; font-size:0;}
+.electronics .sub_btn a { background-color: #615bef; color:#fff; font-size:11px; display:inline-block; padding:13px 0; margin:0 auto; width:202px;}
+.electronics .sub_btn a + a { margin-left:50px;}
+
+.nav_sub2 { margin-top:32px;}
+.nav_sub > li { }
 .nav_sub2 > li + li { margin-top:13px;}
-.electronics > a {display: none;}
+.nav_sub2 > li > a::before { display: inline-block; margin-right: 9px;}
+
+.sub_footer { width:78.613861%; margin: 0 auto;}
+.sub_footer::after { content: ''; display: block; clear: both;}
+.sub_footer li { width:50%; float:left;}
+.sub_footer li * { font-size:9px; display: block; margin-right: 112px;}
+
+.sub_footer li img { float:left; margin-right: 50px; max-width:160px; width:26.890756% /* 160/595 */}
+.sub_footer li strong { font-size: 11px; font-weight: 900; color:#45547b; margin:5px 0 6px; }
+.sub_footer li a { color:#615bef; margin-top:2px;}
+
+
 /* nav - right side */
 .nav_etc { font-size:0; float:right; color:#fff;}
 .nav_etc li { display: inline-block;font-size:10px; height: inherit;}
