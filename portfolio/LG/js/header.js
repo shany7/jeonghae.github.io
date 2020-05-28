@@ -10,22 +10,46 @@ openSubMenu();                      // 아이패드 이하 크기에서 하위�
 btnOption();                        // 상단 버튼메뉴
 serchBox();                         // 검색창 열기
 moveInhouse();                      // 자회사 이동
-function mainMenu () {
-    if ( window.innerWidth < 1280) { return;}     // 브라우저 크기에서만 작동.
 
+window.onresize = function () { closeOpenMenu();};
+
+function closeOpenMenu() {
+    var nav_main = document.querySelector('.nav_main');
+    var side_btn = document.querySelector('.side_menuBtn');
+    if(window.innerWidth > 1280 && nav_main.classList.contains('on')) {
+        nav_main.classList.remove('on');
+        side_btn.classList.remove('on_click');
+
+        document.querySelector('.nav_main > li.on').classList.remove('on');
+        
+    }
+
+}
+
+function mainMenu () {
+    
     var nav_mainLi = document.querySelectorAll(".nav_main > li");
+
     for ( var i =0; i < nav_mainLi.length; i++) {
         nav_mainLi[i].addEventListener("mouseenter", listOn);
         nav_mainLi[i].addEventListener("mouseleave", listOff);
 
         function listOn (e) {
-            e.target.classList.add("on");
-            e.target.parentNode.classList.add("on");
-
+            if(window.innerWidth > 1280) {
+                e.target.classList.add("on");
+                e.target.parentNode.classList.add("on");
+            } else {
+                e.target.style.backgroundColor = "#ac0c3f";
+            }
         }
         function listOff (e){
-            e.target.parentNode.classList.remove("on");
-            e.target.classList.remove("on");
+            if (window.innerWidth > 1280) {
+                e.target.parentNode.classList.remove("on");
+                e.target.classList.remove("on");
+            } else {
+                e.target.style.backgroundColor = "#444547";
+            }
+            
         }
     }
 }
@@ -34,6 +58,7 @@ function showMenu () {
     var menuBtn = document.querySelector(".side_menuBtn");
     menuBtn.onclick = function () {
         var nav_mainEl = menuBtn.parentNode.querySelector(".nav_main");
+        
         if ( menuBtn.className === "side_menuBtn on_click") { 
             menuBtn.classList.remove("on_click");
             nav_mainEl.classList.remove("on");
@@ -42,7 +67,6 @@ function showMenu () {
         menuBtn.classList.add("on_click");
         nav_mainEl.classList.add("on");
     }
-
 
 }
 
