@@ -8,17 +8,15 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css" >
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="js/header.js"></script>
+<script src="js/main.js"></script>
 
   <script>
    
   </script>
 <style>
-	.bx-wrapper { 
-		 box-shadow: none; background: none; margin: 0;position: relative;
-		 width:100%; border:none;
 
-	}
 	
 /* @font-face {
   font-family: "LGSmHaSB";
@@ -120,11 +118,44 @@
 			<div class = "left"></div>
 			<div class = "contents"><!-- content start -->
 				<div class ="top_left top">
-					<ul class = "main_visual">
-						<li><a href><img src = "images/main-visual-1.png" alt=""/></a></li>
-						<li><a href><img src = "images/main-visual-2.png" alt=""/></a></li>
-						<li><a href><img src = "images/main-visual-3.png" alt=""/></a></li>
+					<ul class = "main_swiper">
+						<li class="slider_item_1 slider_item">
+							
+							<div class="swiper_content">
+								<h2 class="slogon_title">사람과 반도체</h2>
+								<p class="slogon_subtitle">더 좋은 세상을 만들어 가는 사람들</p>
+								<p class="slogon_body">
+										Semiconductors make people live in comfort. <br/>
+									
+								We are standing on the threshold of the world dominated by semiconductors.
+
+								</p>
+							</div>
+						</li>
+						<li class="slider_item_2 slider_item">
+							<div class="swiper_content">
+									<h2 class="slogon_title">반도체가 만드는 세상</h2>
+									<p class="slogon_subtitle">첨단화된 시스템 반도체가 스마트한 세상을 만들다</p>
+									<p class="slogon_body">
+											
+								Smart life comes in our hand.
+							
+	
+									</p>
+							</div>
+						<li class="slider_item_3 slider_item">
+							<div class="swiper_content">
+									<h2 class="slogon_title">Semiconductor is Everywhere!</h2>
+									<p class="slogon_subtitle">반도체 기술이 상상 속 세계를 현실로 끌어내다</p>
+							</div>
+						</li>
 					</ul>
+					<div class='slider_paging'>
+						<span class="slider_paging_btn active 1"></span>
+						<span class="slider_paging_btn 2"></span>
+						<span class="slider_paging_btn 3"></span>
+					</div>
+					
 				</div>
 				<ul class = "main_product top">
 					<div class = "up_side">

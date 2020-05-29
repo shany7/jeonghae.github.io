@@ -1,9 +1,6 @@
 window.onload = function () {
     var btnEl = document.querySelector(".nav_btn");
-    $('.main_visual').bxSlider( {
-        auto: false,
-        pager:false,
-    });
+
 mainMenu();                         // 브라우저 크기에서 전체메뉴 오픈
 showMenu();                         // 아이패드 이하 크기일 때 전체메뉴 오픈
 openSubMenu();                      // 아이패드 이하 크기에서 하위메뉴 오픈
